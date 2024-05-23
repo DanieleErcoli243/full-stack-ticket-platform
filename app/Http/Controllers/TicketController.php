@@ -13,7 +13,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::select('title', 'message', 'created_at', 'updated_at')->with('category')->get();
+        $tickets = Ticket::select('id', 'title', 'message', 'created_at', 'updated_at')->with('category')->get();
 
         return view('index', compact('tickets'));
     }
@@ -39,7 +39,7 @@ class TicketController extends Controller
      */
     public function show(ticket $ticket)
     {
-        //
+        return view('show', compact('ticket'));
     }
 
     /**

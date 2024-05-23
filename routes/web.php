@@ -27,6 +27,10 @@ Route::get('/dashboard', function () {
 
 // rotta per la index
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+// rotta per la show
+Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
+// rotta per la modifica
+Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
