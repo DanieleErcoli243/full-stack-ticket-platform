@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ticket;
+use App\Models\Ticket;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -12,7 +13,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::select('title', 'message', 'created_at', 'updated_at')->with('category')->get();
+
+        return view('index', compact('tickets'));
     }
 
     /**
