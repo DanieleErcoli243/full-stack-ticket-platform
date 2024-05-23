@@ -8,13 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ env('APP_NAME', 'Laravel') }} | @yield('title')</title>
 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <!-- cdns -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' integrity='sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==' crossorigin='anonymous'/>
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -33,7 +34,7 @@
                             </g>
                         </svg>
                     </div>
-                    {{-- config('app.name', 'Laravel') --}}
+                    {{-- env('APP_NAME', 'Laravel') --}}
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -44,7 +45,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{route('tickets.index') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -85,7 +86,7 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class="main-container">
             @yield('content')
         </main>
     </div>
