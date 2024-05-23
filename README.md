@@ -1,6 +1,6 @@
 Full Stack Ticket Platform
 
-<aside>
+
 📚 📑 **Consegna** 
 Realizziamo un’applicazione in Laravel che visualizza e permette di gestire e ricercare in maniera interattiva dei Ticket di supporto.
 E’ prevista una sola tipologia di utente: admin. L’admin ha accesso alla lista degli operatori, dei ticket e delle relative categorie.
