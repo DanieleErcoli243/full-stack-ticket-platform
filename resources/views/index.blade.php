@@ -7,6 +7,7 @@
     <tr>
         <th>Titolo</th>
         <th>Messaggio</th>
+        <th>Categoria</th>
         <th>Creato</th>
         <th>Ultima modifica</th>
         <th>
@@ -17,6 +18,7 @@
     @forelse($tickets as $ticket) 
     <tr>
         <td>{{ $ticket->title }}</td>
+        <td>{{ $ticket->message }}</td>
         <td>{{ $ticket->message }}</td>
         <td>{{ $ticket->created_at }}</td>
         <td>{{ $ticket->updated_at }}</td>
