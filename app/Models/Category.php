@@ -10,4 +10,9 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['label'];
+
+    public function tickets () 
+    {
+        return belongsToMany (Ticket::class);
+    }
 }

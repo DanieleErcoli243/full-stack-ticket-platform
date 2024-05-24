@@ -19,7 +19,7 @@
     <tr>
         <td>{{ $ticket->title }}</td>
         <td>{{ $ticket->message }}</td>
-        <td>{{ $ticket->message }}</td>
+        <td class="text-center">{{ $ticket->category ? $ticket->category : '-' }}</td>
         <td>{{ $ticket->created_at }}</td>
         <td>{{ $ticket->updated_at }}</td>
         <td>
