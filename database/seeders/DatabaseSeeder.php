@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
       
         \App\Models\Ticket::factory(100)->create();
+        \App\Models\Worker::factory(50)->create();
 
         $this->call([CategorySeeder::class]); 
 

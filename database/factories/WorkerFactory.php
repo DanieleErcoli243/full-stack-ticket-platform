@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\workers>
  */
-class WorkersFactory extends Factory
+class WorkerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class WorkersFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'is_available' => fake()->boolean(),
         ];
     }
 }
