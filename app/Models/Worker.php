@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class workers extends Model
 {
     use HasFactory;
+
+    public function tickets() 
+    {
+        return belongsToMany (Ticket::class);
+    }
 }
