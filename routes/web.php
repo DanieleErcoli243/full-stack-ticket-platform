@@ -26,16 +26,16 @@ Route::get('/dashboard', function () {
 
 
 // rotta per la index
-Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index');
+Route::get('/tickets', [TicketController::class, 'index'])->middleware('auth')->name('tickets.index');
 // rotta per la show
-Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
-// rotta per la creazione
-Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create');
-Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
-// rotta per la modifica
-Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->name('tickets.edit');
+Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->middleware('auth')->name('tickets.show');
+// rotte per la creazione
+Route::get('/tickets/create', [TicketController::class, 'create'])->middleware('auth')->name('tickets.create');
+Route::post('/tickets', [TicketController::class, 'store'])->middleware('auth')->name('tickets.store');
+// rotte per la modifica
+Route::get('/tickets/{ticket}/edit', [TicketController::class, 'edit'])->middleware('auth')->name('tickets.edit');
 
-Route::patch('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
+Route::patch('/tickets/{ticket}', [TicketController::class, 'update'])->middleware('auth')->name('tickets.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
