@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Worker;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -25,8 +26,9 @@ class TicketController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $workers = Worker::all(); 
         $ticket = new Ticket();
-        return view('tickets.create', compact('categories', 'tickets'));
+        return view('tickets.create', compact('categories', 'tickets', 'workers'));
     }
 
     /**
@@ -36,8 +38,12 @@ class TicketController extends Controller
     {
         $data = $request-> validate([
             'title' => 'string|required|unique:tickets',
-            'message' => 'string|required'
+            'message' => 'string|required',
+            'category-id' => 'nullable!exists:category,id',
+            'worker' => 'nullable|exists:worker,id'
         ]);
+
+        
 
         $ticket = new Ticket();
 
@@ -48,7 +54,11 @@ class TicketController extends Controller
         if(Arr::exists($data, 'categories')){
             $ticket->category()->attach($data['category']);
         };
-
+        
+        /* if(Arr::exists($data, 'workers')){
+            $ticket->category()->attach($data['category']);
+        };
+ */
         return to_route('tickets.index');
 
     }

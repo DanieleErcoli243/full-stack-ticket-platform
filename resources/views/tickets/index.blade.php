@@ -8,10 +8,11 @@
         <th>Titolo</th>
         <th>Messaggio</th>
         <th>Categoria</th>
+        <th>Assegnato a</th>
         <th>Creato</th>
         <th>Ultima modifica</th>
         <th>
-            <a href="#">
+            <a href="{{ route('tickets.create') }}">
                 <i class="fas fa-plus"></i></th>
             </a>
     </tr>
@@ -20,6 +21,7 @@
         <td>{{ $ticket->title }}</td>
         <td>{{ $ticket->message }}</td>
         <td class="text-center">{{ $ticket->category ? $ticket->category : '-' }}</td>
+        <td class="text-center">{{ $ticket->worker ? $ticket->category : '-' }}</td>
         <td>{{ $ticket->created_at }}</td>
         <td>{{ $ticket->updated_at }}</td>
         <td>
