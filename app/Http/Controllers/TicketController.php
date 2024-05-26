@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class TicketController extends Controller
 {
@@ -23,7 +24,9 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $ticket = new Ticket();
+        return view('tickets.create', compact('categories', 'tickets'));
     }
 
     /**
@@ -31,7 +34,23 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request-> validate([
+            'title' => 'string|required|unique:tickets',
+            'message' => 'string|required'
+        ]);
+
+        $ticket = new Ticket();
+
+        $ticket->fill($data);
+        
+        $ticket->save();
+
+        if(Arr::exists($data, 'categories')){
+            $ticket->category()->attach($data['category']);
+        };
+
+        return to_route('tickets.index');
+
     }
 
     /**

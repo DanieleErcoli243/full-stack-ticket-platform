@@ -10,6 +10,8 @@ class ticket extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'message'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
