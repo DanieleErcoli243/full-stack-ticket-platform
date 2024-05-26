@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\Worker;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -68,6 +70,7 @@ class TicketController extends Controller
      */
     public function show(ticket $ticket)
     {
+        
         return view('tickets.show', compact('ticket'));
     }
 

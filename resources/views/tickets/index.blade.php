@@ -20,8 +20,8 @@
     <tr>
         <td>{{ $ticket->title }}</td>
         <td>{{ $ticket->message }}</td>
-        <td class="text-center">{{ $ticket->category ? $ticket->category : '-' }}</td>
-        <td class="text-center">{{ $ticket->worker ? $ticket->category : '-' }}</td>
+        <td class="text-center">{{ $ticket->category ? $ticket->category->label : '-' }}</td>
+        <td class="text-center">{{ $ticket->worker ? $ticket->category->name : '-' }}</td>
         <td>{{ $ticket->created_at }}</td>
         <td>{{ $ticket->updated_at }}</td>
         <td>
